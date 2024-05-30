@@ -1,0 +1,69 @@
+html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta de Matrimonio</title>
+<style>
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #f0f8ff;
+font-family: Arial, sans-serif;
+}
+.container {
+text-align: center;
+position: relative;
+}
+.button {
+padding: 10px 20px;
+margin: 10px;
+font-size: 18px;
+cursor: pointer;
+border: none;
+border-radius: 5px;
+position: relative;
+}
+.yes {
+background-color: #4CAF50;
+color: white;
+}
+.no {
+background-color: #f44336;
+color: white;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Gaby, ¿quieres casarte conmigo?</h1>
+<button class="button yes" onclick="alert('¡Sí! ¡Gracias por aceptar!')">Sí</button>
+<button class="button no" onmouseover="moveButton()">No</button>
+</div>
+
+<script>
+function moveButton() {
+const button = document.querySelector('.no');
+const container = document.querySelector('.container');
+const containerRect = container.getBoundingClientRect();
+const buttonRect = button.getBoundingClientRect();
+
+let newLeft, newTop;
+
+do {
+newLeft = Math.random() * (containerRect.width - buttonRect.width);
+newTop = Math.random() * (containerRect.height - buttonRect.height);
+} while (newLeft < 0 || newTop < 0 ||
+newLeft + buttonRect.width > containerRect.width ||
+newTop + buttonRect.height > containerRect.height);
+
+button.style.position = "absolute";
+button.style.left = `${newLeft}px`;
+button.style.top = `${newTop}px`;
+}
+</script>
+</body>
+</html>
